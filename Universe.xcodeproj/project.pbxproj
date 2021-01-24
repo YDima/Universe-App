@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64A6280125BB898000593D81 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280025BB898000593D81 /* Universe.swift */; };
+		64A6280425BB96A400593D81 /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280325BB96A400593D81 /* Galaxy.swift */; };
+		64A6280725BC1A7E00593D81 /* SolarSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280625BC1A7E00593D81 /* SolarSystem.swift */; };
+		64A6280A25BC1A8800593D81 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280925BC1A8800593D81 /* Star.swift */; };
+		64A6280D25BC1A9500593D81 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280C25BC1A9500593D81 /* Planet.swift */; };
+		64C2741225BC5FF300584B46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 64C2741125BC5FF300584B46 /* README.md */; };
 		64EE37D325B0908F005129CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE37D225B0908F005129CA /* AppDelegate.swift */; };
 		64EE37D525B0908F005129CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE37D425B0908F005129CA /* SceneDelegate.swift */; };
 		64EE37D725B0908F005129CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE37D625B0908F005129CA /* ViewController.swift */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		64A6280025BB898000593D81 /* Universe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universe.swift; sourceTree = "<group>"; };
+		64A6280325BB96A400593D81 /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
+		64A6280625BC1A7E00593D81 /* SolarSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystem.swift; sourceTree = "<group>"; };
+		64A6280925BC1A8800593D81 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		64A6280C25BC1A9500593D81 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		64C2741125BC5FF300584B46 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		64EE37CF25B0908E005129CA /* Universe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EE37D225B0908F005129CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EE37D425B0908F005129CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +49,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64A627FF25BB895D00593D81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64A6280025BB898000593D81 /* Universe.swift */,
+				64A6280325BB96A400593D81 /* Galaxy.swift */,
+				64A6280625BC1A7E00593D81 /* SolarSystem.swift */,
+				64A6280925BC1A8800593D81 /* Star.swift */,
+				64A6280C25BC1A9500593D81 /* Planet.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64A6280F25BC1B1800593D81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64EE37D825B0908F005129CA /* Main.storyboard */,
+				64EE37DD25B09092005129CA /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		64A6281025BC1B3300593D81 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64EE37D625B0908F005129CA /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		64EE37C625B0908E005129CA = {
 			isa = PBXGroup;
 			children = (
+				64C2741125BC5FF300584B46 /* README.md */,
 				64EE37D125B0908F005129CA /* Universe */,
 				64EE37D025B0908E005129CA /* Products */,
 			);
@@ -56,13 +98,13 @@
 		64EE37D125B0908F005129CA /* Universe */ = {
 			isa = PBXGroup;
 			children = (
+				64EE37DB25B09092005129CA /* Assets.xcassets */,
+				64EE37E025B09092005129CA /* Info.plist */,
 				64EE37D225B0908F005129CA /* AppDelegate.swift */,
 				64EE37D425B0908F005129CA /* SceneDelegate.swift */,
-				64EE37D625B0908F005129CA /* ViewController.swift */,
-				64EE37D825B0908F005129CA /* Main.storyboard */,
-				64EE37DB25B09092005129CA /* Assets.xcassets */,
-				64EE37DD25B09092005129CA /* LaunchScreen.storyboard */,
-				64EE37E025B09092005129CA /* Info.plist */,
+				64A627FF25BB895D00593D81 /* Model */,
+				64A6280F25BC1B1800593D81 /* View */,
+				64A6281025BC1B3300593D81 /* Controllers */,
 			);
 			path = Universe;
 			sourceTree = "<group>";
@@ -126,6 +168,7 @@
 			files = (
 				64EE37DF25B09092005129CA /* LaunchScreen.storyboard in Resources */,
 				64EE37DC25B09092005129CA /* Assets.xcassets in Resources */,
+				64C2741225BC5FF300584B46 /* README.md in Resources */,
 				64EE37DA25B0908F005129CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +182,11 @@
 			files = (
 				64EE37D725B0908F005129CA /* ViewController.swift in Sources */,
 				64EE37D325B0908F005129CA /* AppDelegate.swift in Sources */,
+				64A6280725BC1A7E00593D81 /* SolarSystem.swift in Sources */,
+				64A6280D25BC1A9500593D81 /* Planet.swift in Sources */,
+				64A6280A25BC1A8800593D81 /* Star.swift in Sources */,
+				64A6280125BB898000593D81 /* Universe.swift in Sources */,
+				64A6280425BB96A400593D81 /* Galaxy.swift in Sources */,
 				64EE37D525B0908F005129CA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Happy-Tech.Universe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Happy-Tech.Universe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
