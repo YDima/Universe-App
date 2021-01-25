@@ -13,6 +13,8 @@
 		64A6280A25BC1A8800593D81 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280925BC1A8800593D81 /* Star.swift */; };
 		64A6280D25BC1A9500593D81 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280C25BC1A9500593D81 /* Planet.swift */; };
 		64C2741225BC5FF300584B46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 64C2741125BC5FF300584B46 /* README.md */; };
+		64C2741725BD96C700584B46 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C2741625BD96C700584B46 /* Timer.swift */; };
+		64C2741D25BDBED700584B46 /* TimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C2741C25BDBED700584B46 /* TimerDelegate.swift */; };
 		64EE37D325B0908F005129CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE37D225B0908F005129CA /* AppDelegate.swift */; };
 		64EE37D525B0908F005129CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE37D425B0908F005129CA /* SceneDelegate.swift */; };
 		64EE37D725B0908F005129CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE37D625B0908F005129CA /* ViewController.swift */; };
@@ -28,6 +30,8 @@
 		64A6280925BC1A8800593D81 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		64A6280C25BC1A9500593D81 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		64C2741125BC5FF300584B46 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		64C2741625BD96C700584B46 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		64C2741C25BDBED700584B46 /* TimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDelegate.swift; sourceTree = "<group>"; };
 		64EE37CF25B0908E005129CA /* Universe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EE37D225B0908F005129CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EE37D425B0908F005129CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,11 +82,22 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		64C2741525BD969C00584B46 /* TimerService */ = {
+			isa = PBXGroup;
+			children = (
+				64C2741625BD96C700584B46 /* Timer.swift */,
+				64C2741C25BDBED700584B46 /* TimerDelegate.swift */,
+			);
+			path = TimerService;
+			sourceTree = "<group>";
+		};
 		64EE37C625B0908E005129CA = {
 			isa = PBXGroup;
 			children = (
 				64C2741125BC5FF300584B46 /* README.md */,
 				64EE37D125B0908F005129CA /* Universe */,
+				64EE37DB25B09092005129CA /* Assets.xcassets */,
+				64EE37E025B09092005129CA /* Info.plist */,
 				64EE37D025B0908E005129CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,10 +113,9 @@
 		64EE37D125B0908F005129CA /* Universe */ = {
 			isa = PBXGroup;
 			children = (
-				64EE37DB25B09092005129CA /* Assets.xcassets */,
-				64EE37E025B09092005129CA /* Info.plist */,
 				64EE37D225B0908F005129CA /* AppDelegate.swift */,
 				64EE37D425B0908F005129CA /* SceneDelegate.swift */,
+				64C2741525BD969C00584B46 /* TimerService */,
 				64A627FF25BB895D00593D81 /* Model */,
 				64A6280F25BC1B1800593D81 /* View */,
 				64A6281025BC1B3300593D81 /* Controllers */,
@@ -186,6 +200,8 @@
 				64A6280D25BC1A9500593D81 /* Planet.swift in Sources */,
 				64A6280A25BC1A8800593D81 /* Star.swift in Sources */,
 				64A6280125BB898000593D81 /* Universe.swift in Sources */,
+				64C2741D25BDBED700584B46 /* TimerDelegate.swift in Sources */,
+				64C2741725BD96C700584B46 /* Timer.swift in Sources */,
 				64A6280425BB96A400593D81 /* Galaxy.swift in Sources */,
 				64EE37D525B0908F005129CA /* SceneDelegate.swift in Sources */,
 			);
@@ -337,6 +353,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 627MATR572;
 				INFOPLIST_FILE = Universe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 627MATR572;
 				INFOPLIST_FILE = Universe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

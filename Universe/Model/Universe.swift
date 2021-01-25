@@ -7,34 +7,63 @@
 
 import Foundation
 
-final class Universe {
+protocol StarChangingPointDelegate {
+     func updateStarData(_ blackHoleChangingPointMass: Double, _ blackHoleChangingPointRadius: Double)
+}
+
+class Universe {
      
      private let name: String
-     private var galaxies = [Galaxy]()
+     private var galaxies: [Galaxy] = []
      private var age: Int = 0
-     var blackHoleMass: Double
-     var blackHoleRadius: Double
+     private var timer: UniverseTimer?
      
-     init(name: String, blackHoleMass: Double, blackHoleRadius: Double) {
+     var star_delegate: StarChangingPointDelegate?
+     
+     var blackHoleChangingPointMass: Double
+     var blackHoleChangingPointRadius: Double
+     
+     init(name: String, blackHoleChangingPointMass: Double, blackHoleChangingPointRadius: Double) {
           self.name = name
-          self.blackHoleMass = blackHoleMass
-          self.blackHoleRadius = blackHoleRadius
-     }
-     
-     func createNewGalaxy() {
+          self.blackHoleChangingPointMass = blackHoleChangingPointMass
+          self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
           
+          timer?.startTimer()
+          timer?.delegate = self
+          
+          star_delegate?.updateStarData(self.blackHoleChangingPointMass, self.blackHoleChangingPointRadius)
+     }
+}
+
+//MARK: - Galaxies functionality
+
+extension Universe: GalaxyDelegate {
+     func createNewGalaxy() {
+          let galaxy = Galaxy(name: "\(self.name)-G\(galaxies.count)")
+          galaxies.append(galaxy)
      }
      
      func galaxiesCollision() {
           
      }
      
-}
-
-//MARK: - Handling galaxies collision
-
-extension Universe: GalaxyDelegate {
      func updateAfterGalaxiesCollision(galaxy1: Galaxy, galaxy2: Galaxy) {
           
      }
 }
+
+//MARK: - Timer delegate
+
+extension Universe: TimerDelegate {
+     func updateAge() {
+          self.age += 1
+          
+          if age%10 == 0 {
+               createNewGalaxy()
+          }
+          if age%30 == 0 {
+               galaxiesCollision()
+          }
+     }
+}
+

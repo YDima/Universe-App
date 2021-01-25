@@ -12,22 +12,37 @@ protocol GalaxyDelegate {
 }
 
 class Galaxy {
-     enum GalaxyType: String {
+     
+     private var name: String
+     private var age: Int = 0
+     private let type = GalaxyType.allCases.randomElement()
+     private var solarSystems: [SolarSystem] = []
+     private var blackHoles: [Star] = []
+     
+     init(name: String) {
+          self.name = name
+     }
+     
+}
+
+//MARK: - Timer delegate
+
+extension Galaxy: TimerDelegate {
+     func updateAge() {
+          self.age += 1
+          
+          
+     }
+}
+
+//MARK: - Galaxy types
+
+extension Galaxy {
+     enum GalaxyType: String, CaseIterable {
           case spiral = "Spiral"
           case elliptical = "Elliptical"
           case lenticular = "Lenticular"
           case irregular = "Irregular"
      }
-     
-     private var name: String
-     private var age: UInt = 0
-     private let type: GalaxyType
-     private var solarSystems = [SolarSystem]()
-     private var blackHoles = [Star]()
-     
-     init(name: String, type: GalaxyType) {
-          self.name = name
-          self.type = type
-     }
-     
 }
+
