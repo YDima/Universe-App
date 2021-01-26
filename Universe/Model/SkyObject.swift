@@ -1,0 +1,13 @@
+//
+//  SkyObject.swift
+//  Universe
+//
+//  Created by Dmytro Yurchenko on 25.1.21.
+//
+
+import Foundation
+
+protocol SkyObject {
+     var name: String { get set }
+     var age: Int { get set }
+}

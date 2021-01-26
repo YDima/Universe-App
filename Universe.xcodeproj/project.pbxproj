@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		648C058025BF667200E32C74 /* SkyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C057F25BF667200E32C74 /* SkyObject.swift */; };
 		64A6280125BB898000593D81 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280025BB898000593D81 /* Universe.swift */; };
 		64A6280425BB96A400593D81 /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280325BB96A400593D81 /* Galaxy.swift */; };
 		64A6280725BC1A7E00593D81 /* SolarSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280625BC1A7E00593D81 /* SolarSystem.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		648C057F25BF667200E32C74 /* SkyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyObject.swift; sourceTree = "<group>"; };
 		64A6280025BB898000593D81 /* Universe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universe.swift; sourceTree = "<group>"; };
 		64A6280325BB96A400593D81 /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		64A6280625BC1A7E00593D81 /* SolarSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystem.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				64A6280625BC1A7E00593D81 /* SolarSystem.swift */,
 				64A6280925BC1A8800593D81 /* Star.swift */,
 				64A6280C25BC1A9500593D81 /* Planet.swift */,
+				648C057F25BF667200E32C74 /* SkyObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				64A6280A25BC1A8800593D81 /* Star.swift in Sources */,
 				64A6280125BB898000593D81 /* Universe.swift in Sources */,
 				64C2741D25BDBED700584B46 /* TimerDelegate.swift in Sources */,
+				648C058025BF667200E32C74 /* SkyObject.swift in Sources */,
 				64C2741725BD96C700584B46 /* Timer.swift in Sources */,
 				64A6280425BB96A400593D81 /* Galaxy.swift in Sources */,
 				64EE37D525B0908F005129CA /* SceneDelegate.swift in Sources */,
@@ -352,7 +356,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 627MATR572;
-				INFOPLIST_FILE = Universe/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -372,7 +376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 627MATR572;
-				INFOPLIST_FILE = Universe/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

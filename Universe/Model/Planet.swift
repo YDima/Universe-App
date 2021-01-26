@@ -33,7 +33,7 @@ class Planet {
 
 //MARK: - Planet types
 
-extension Planet {
+private extension Planet {
      enum PlanetType: String, CaseIterable {
           case gasGiant = "Gas giant"
           case superEarth = "Super Earth"
@@ -44,15 +44,15 @@ extension Planet {
 
 //MARK: - Initializers
 
-extension Planet {
-     private func initPlanetData() {
+private extension Planet {
+     func initPlanetData() {
           let maxPlanetMass = 1000.0
           self.mass = Double.random(in: 0..<maxPlanetMass)
           self.radius = Double.random(in: 0..<100)
           self.temperature = Double.random(in: -1000...1000)
      }
      
-     private func initializeSatelites() {
+     func initializeSatelites() {
           let randomNumberOfSatelites = Int.random(in: 0...5)
           for sateliteNumber in 0...randomNumberOfSatelites {
                let satelite = Planet(name: "S\(sateliteNumber)", main: self)
