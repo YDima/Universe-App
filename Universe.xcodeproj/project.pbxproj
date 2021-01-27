@@ -84,6 +84,17 @@
 			path = "State machine";
 			sourceTree = "<group>";
 		};
+		6465E58225C172A500CB4FD9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				64EE37D225B0908F005129CA /* AppDelegate.swift */,
+				64EE37D425B0908F005129CA /* SceneDelegate.swift */,
+				64EE37DB25B09092005129CA /* Assets.xcassets */,
+				64EE37E025B09092005129CA /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		64988C5925C029A20084E2EE /* Universe */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,8 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				64EE37D125B0908F005129CA /* Universe */,
-				64EE37DB25B09092005129CA /* Assets.xcassets */,
-				64EE37E025B09092005129CA /* Info.plist */,
 				64EE37D025B0908E005129CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -183,8 +192,7 @@
 		64EE37D125B0908F005129CA /* Universe */ = {
 			isa = PBXGroup;
 			children = (
-				64EE37D225B0908F005129CA /* AppDelegate.swift */,
-				64EE37D425B0908F005129CA /* SceneDelegate.swift */,
+				6465E58225C172A500CB4FD9 /* App */,
 				64A627FF25BB895D00593D81 /* Model */,
 				6465E56F25C13FFA00CB4FD9 /* State machine */,
 				64A6280F25BC1B1800593D81 /* View */,
