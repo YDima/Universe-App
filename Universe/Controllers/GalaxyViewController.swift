@@ -7,9 +7,10 @@
 
 import UIKit
 
-class GalaxyViewController: UIViewController, ChangesDelegate {
+class GalaxyViewController: UIViewController, ChangesDelegate, GalaxyUpdate {
      
      @IBOutlet weak var skyObjectsCollection: UICollectionView!
+     var universeViewController: UniverseViewController?
      var galaxy: Galaxy?
      private let reuseIdentifier = "skyObjectCell"
      
@@ -19,6 +20,25 @@ class GalaxyViewController: UIViewController, ChangesDelegate {
           super.viewDidLoad()
           skyObjectsCollection.delegate = self
           skyObjectsCollection.dataSource = self
+          universeViewController?.galaxyDelegate = self
+     }
+     
+     override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          
+          self.title = "Solar systems"
+     }
+     
+     override func didMove(toParent parent: UIViewController?) {
+          super.didMove(toParent: parent)
+          
+          if parent == nil {
+               delegate?.notifyStateMachine(source: self, .Back)
+          }
+     }
+     
+     func updateGalaxy(_ galaxy: Galaxy) {
+          self.galaxy = galaxy
      }
      
      func updateChanges() {

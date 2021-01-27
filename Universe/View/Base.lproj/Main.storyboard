@@ -237,8 +237,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="BKv-O2-Ggu"/>
                     <connections>
-                        <outlet property="collectionView" destination="Cbf-HC-vT0" id="fEg-5x-5wA"/>
-                        <outlet property="textLabel" destination="2cS-fh-43H" id="mpA-l5-e37"/>
+                        <outlet property="planetsCollection" destination="Cbf-HC-vT0" id="G5E-hW-yhP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8C-gu-hml" sceneMemberID="firstResponder"/>
@@ -276,7 +275,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="22H-n7-F11"/>
                     <connections>
-                        <outlet property="collectionView" destination="dh1-uZ-O2c" id="48h-LT-h5r"/>
+                        <outlet property="satelitesCollection" destination="dh1-uZ-O2c" id="CPU-tU-R8f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4M-EB-QtF" sceneMemberID="firstResponder"/>

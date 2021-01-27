@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol GalaxyUpdate {
+     func updateGalaxy(_ galaxy: Galaxy)
+}
+
 class UniverseViewController: UIViewController, ChangesDelegate {
      
      @IBOutlet weak var galaxiesCollection: UICollectionView!
@@ -14,6 +18,7 @@ class UniverseViewController: UIViewController, ChangesDelegate {
      private let reuseIdentifier = "galaxyCell"
      
      var delegate: StateMachineProtocol?
+     var galaxyDelegate: GalaxyUpdate?
      
      var universeStateMachine = SimpleStateMachine<UniverseStates, Actions>(initialState: .Galaxies)
      
@@ -51,28 +56,28 @@ class UniverseViewController: UIViewController, ChangesDelegate {
 extension UniverseViewController {
      func setup() {
           
-          universeStateMachine[.Galaxies] = [
+          self.universeStateMachine[.Galaxies] = [
                .Next: .SolarSystems
           ]
           
-          universeStateMachine[.SolarSystems] = [
+          self.universeStateMachine[.SolarSystems] = [
                .Next: .PlanetsAndStar,
                .Back: .Galaxies
           ]
           
-          universeStateMachine[.PlanetsAndStar] = [
+          self.universeStateMachine[.PlanetsAndStar] = [
                .Next: .Satelites,
                .Back: .SolarSystems
           ]
           
-          universeStateMachine[.Satelites] = [
+          self.universeStateMachine[.Satelites] = [
                .Back: .PlanetsAndStar
           ]
           
-          universeViewController.delegate = self
-          galaxyViewController.delegate = self
-          solarSystemViewController.delegate = self
-          planetViewController.delegate = self
+          self.universeViewController.delegate = self
+          self.galaxyViewController.delegate = self
+          self.solarSystemViewController.delegate = self
+          self.planetViewController.delegate = self
      }
 }
 
@@ -83,9 +88,10 @@ extension UniverseViewController: StateMachineProtocol {
           
           if let nextState = universeStateMachine.transition(event: event) {
                
-               if event == .Back { return }
-               
-               self.navigationController?.isNavigationBarHidden = false
+               if event == .Back {
+                    print(333)
+                    return
+               }
                
                switch nextState {
                     case .Galaxies:
@@ -126,7 +132,8 @@ extension UniverseViewController: UICollectionViewDataSource {
 
 extension UniverseViewController: UICollectionViewDelegate {
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          print(3)
+          let galaxy = universe!.galaxies[indexPath.row]
+          galaxyDelegate?.updateGalaxy(galaxy)
           notifyStateMachine(source: self, .Next)
      }
 }

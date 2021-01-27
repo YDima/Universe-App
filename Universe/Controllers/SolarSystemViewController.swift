@@ -11,21 +11,61 @@ class SolarSystemViewController: UIViewController {
      
      var delegate: StateMachineProtocol?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+     @IBOutlet weak var planetsCollection: UICollectionView!
+     var galaxy: Galaxy?
+     private let reuseIdentifier = "skyObjectCell"
+     
+     override func viewDidLoad() {
+          super.viewDidLoad()
+          planetsCollection.delegate = self
+          planetsCollection.dataSource = self
+     }
+     
+     override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          
+          self.title = "Star and planets"
+     }
+     
+     override func didMove(toParent parent: UIViewController?) {
+          super.didMove(toParent: parent)
+          
+          if parent == nil {
+               delegate?.notifyStateMachine(source: self, .Back)
+          }
+     }
+     
+     func updateChanges() {
+          DispatchQueue.main.async { [weak self] in
+               self?.planetsCollection.reloadData()
+          }
+     }
+     
+}
 
-        // Do any additional setup after loading the view.
-    }
-    
+extension SolarSystemViewController: UICollectionViewDataSource {
+     
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+          galaxy?.skyObjects.count ?? 0
+     }
+     
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+          let skyObject = galaxy!.skyObjects[indexPath.item]
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SkyObjectCollectionViewCell
+          
+          cell.name.text = skyObject.name
+          cell.age.text = "Age: \(skyObject.age)"
+          cell.mass.text = "Mass: \(skyObject.mass)"
+          
+          cell.layer.cornerRadius = cell.frame.height / 5
+          
+          return cell
+     }
+     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension SolarSystemViewController: UICollectionViewDelegate {
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+          
+     }
 }
