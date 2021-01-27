@@ -25,7 +25,7 @@ class Universe {
           self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
           
           DispatchQueue.global(qos: .background).async { [weak self] in
-               self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
+               self?.timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
                RunLoop.current.run()
           }
      }

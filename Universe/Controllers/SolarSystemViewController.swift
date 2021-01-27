@@ -8,6 +8,8 @@
 import UIKit
 
 class SolarSystemViewController: UIViewController {
+     
+     var delegate: StateMachineProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()

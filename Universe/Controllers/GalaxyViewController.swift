@@ -13,6 +13,8 @@ class GalaxyViewController: UIViewController, ChangesDelegate {
      var galaxy: Galaxy?
      private let reuseIdentifier = "skyObjectCell"
      
+     var delegate: StateMachineProtocol?
+     
      override func viewDidLoad() {
           super.viewDidLoad()
           skyObjectsCollection.delegate = self
@@ -30,15 +32,16 @@ class GalaxyViewController: UIViewController, ChangesDelegate {
 extension GalaxyViewController: UICollectionViewDataSource {
      
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          galaxy!.skyObjects.count
+          galaxy?.skyObjects.count ?? 0
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
           let skyObject = galaxy!.skyObjects[indexPath.item]
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! GalaxyCollectionViewCell
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SkyObjectCollectionViewCell
           
           cell.name.text = skyObject.name
           cell.age.text = "Age: \(skyObject.age)"
+          cell.mass.text = "Mass: \(skyObject.mass)"
           
           cell.layer.cornerRadius = cell.frame.height / 5
           

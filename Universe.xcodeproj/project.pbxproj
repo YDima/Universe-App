@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6465E56825C0CB6300CB4FD9 /* ChangesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E56725C0CB6300CB4FD9 /* ChangesDelegate.swift */; };
+		6465E56C25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E56B25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift */; };
+		6465E57125C1404700CB4FD9 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57025C1404700CB4FD9 /* StateMachine.swift */; };
+		6465E57425C1426E00CB4FD9 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57325C1426E00CB4FD9 /* States.swift */; };
+		6465E57725C1432D00CB4FD9 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57625C1432D00CB4FD9 /* Actions.swift */; };
+		6465E57A25C143A000CB4FD9 /* StateMachineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57925C143A000CB4FD9 /* StateMachineProtocol.swift */; };
 		648444FE25C0741200927F00 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648444FD25C0741200927F00 /* UniverseViewController.swift */; };
 		6484450225C0747900927F00 /* GalaxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484450125C0747900927F00 /* GalaxyViewController.swift */; };
 		6484450525C0748B00927F00 /* SolarSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484450425C0748B00927F00 /* SolarSystemViewController.swift */; };
@@ -31,6 +36,11 @@
 
 /* Begin PBXFileReference section */
 		6465E56725C0CB6300CB4FD9 /* ChangesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangesDelegate.swift; sourceTree = "<group>"; };
+		6465E56B25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyObjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		6465E57025C1404700CB4FD9 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		6465E57325C1426E00CB4FD9 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		6465E57625C1432D00CB4FD9 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		6465E57925C143A000CB4FD9 /* StateMachineProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineProtocol.swift; sourceTree = "<group>"; };
 		648444FD25C0741200927F00 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
 		6484450125C0747900927F00 /* GalaxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyViewController.swift; sourceTree = "<group>"; };
 		6484450425C0748B00927F00 /* SolarSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystemViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +75,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6465E56F25C13FFA00CB4FD9 /* State machine */ = {
+			isa = PBXGroup;
+			children = (
+				6465E57025C1404700CB4FD9 /* StateMachine.swift */,
+				6465E57325C1426E00CB4FD9 /* States.swift */,
+				6465E57625C1432D00CB4FD9 /* Actions.swift */,
+				6465E57925C143A000CB4FD9 /* StateMachineProtocol.swift */,
+			);
+			path = "State machine";
+			sourceTree = "<group>";
+		};
 		64988C5925C029A20084E2EE /* Universe */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +148,7 @@
 				64EE37D825B0908F005129CA /* Main.storyboard */,
 				64EE37DD25B09092005129CA /* LaunchScreen.storyboard */,
 				6484450A25C08CF400927F00 /* GalaxyCollectionViewCell.swift */,
+				6465E56B25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +189,7 @@
 				64EE37D225B0908F005129CA /* AppDelegate.swift */,
 				64EE37D425B0908F005129CA /* SceneDelegate.swift */,
 				64A627FF25BB895D00593D81 /* Model */,
+				6465E56F25C13FFA00CB4FD9 /* State machine */,
 				64A6280F25BC1B1800593D81 /* View */,
 				64A6281025BC1B3300593D81 /* Controllers */,
 			);
@@ -249,17 +272,22 @@
 				64EE37D325B0908F005129CA /* AppDelegate.swift in Sources */,
 				648444FE25C0741200927F00 /* UniverseViewController.swift in Sources */,
 				6465E56825C0CB6300CB4FD9 /* ChangesDelegate.swift in Sources */,
+				6465E57725C1432D00CB4FD9 /* Actions.swift in Sources */,
 				64A6280725BC1A7E00593D81 /* SolarSystem.swift in Sources */,
 				64A6280D25BC1A9500593D81 /* Planet.swift in Sources */,
 				64A6280A25BC1A8800593D81 /* Star.swift in Sources */,
 				64A6280125BB898000593D81 /* Universe.swift in Sources */,
+				6465E57425C1426E00CB4FD9 /* States.swift in Sources */,
+				6465E56C25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift in Sources */,
 				6484450825C0749D00927F00 /* PlanetViewController.swift in Sources */,
 				648C058025BF667200E32C74 /* SkyObject.swift in Sources */,
 				6484450B25C08CF400927F00 /* GalaxyCollectionViewCell.swift in Sources */,
+				6465E57125C1404700CB4FD9 /* StateMachine.swift in Sources */,
 				6484450225C0747900927F00 /* GalaxyViewController.swift in Sources */,
 				64A6280425BB96A400593D81 /* Galaxy.swift in Sources */,
 				64988C6225C02B2C0084E2EE /* GalaxyType.swift in Sources */,
 				64EE37D525B0908F005129CA /* SceneDelegate.swift in Sources */,
+				6465E57A25C143A000CB4FD9 /* StateMachineProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

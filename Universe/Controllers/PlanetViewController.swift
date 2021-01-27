@@ -8,6 +8,8 @@
 import UIKit
 
 class PlanetViewController: UIViewController {
+     
+     var delegate: StateMachineProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
