@@ -90,7 +90,6 @@
 				64EE37D225B0908F005129CA /* AppDelegate.swift */,
 				64EE37D425B0908F005129CA /* SceneDelegate.swift */,
 				64EE37DB25B09092005129CA /* Assets.xcassets */,
-				64EE37E025B09092005129CA /* Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -177,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				64EE37D125B0908F005129CA /* Universe */,
+				64EE37E025B09092005129CA /* Info.plist */,
 				64EE37D025B0908E005129CA /* Products */,
 			);
 			sourceTree = "<group>";
