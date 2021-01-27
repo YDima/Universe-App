@@ -16,21 +16,19 @@ class Galaxy {
      var name: String
      var age: Int = 0
      var mass: Double = 3.0
-     private let type = GalaxyType.allCases.randomElement()
-     private var skyObjects: [SkyObject] = []
-     private var timer: UniverseTimer?
+     let type = GalaxyType.allCases.randomElement()
+     var skyObjects: [SkyObject] = []
      
      var blackHoleChangingPointMass: Double
      var blackHoleChangingPointRadius: Double
      
      var delegate: GalaxyDelegate?
+     var changesDelegate: ChangesDelegate?
      
-     init(name: String, timer: UniverseTimer?, blackHoleChangingPointMass: Double, blackHoleChangingPointRadius: Double) {
+     init(name: String,_ blackHoleChangingPointMass: Double,_ blackHoleChangingPointRadius: Double) {
           self.name = name
           self.blackHoleChangingPointMass = blackHoleChangingPointMass
           self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
-          self.timer = timer
-          self.timer?.delegate = self
      }
      
      func collide(with galaxy: Galaxy) {
@@ -50,15 +48,31 @@ class Galaxy {
      }
 }
 
-//MARK: - Timer delegate
+//MARK: - Solar system delegate
 
-extension Galaxy: TimerDelegate {
+extension Galaxy: SolarSystemDelegate {
+     func solarSystemBecameBlackHole(_ star: Star, _ solarSystem: SolarSystem) {
+          if let i = skyObjects.firstIndex(where: { $0.name == solarSystem.name }) {
+               skyObjects[i] = star
+          }
+     }
+}
+
+//MARK: - Update
+
+extension Galaxy {
      func updateAge() {
           self.age += 1
           
-          if age%10 == 0 {
+          if self.age%10 == 0 {
                createNewSolarSystem()
           }
+          
+          skyObjects.forEach {
+               $0.updateAge()
+          }
+          
+          self.changesDelegate?.updateChanges()
           
      }
 }
@@ -67,19 +81,11 @@ extension Galaxy: TimerDelegate {
 
 private extension Galaxy {
      func createNewSolarSystem() {
-          let solarSystem = SolarSystem(name: "\(self.name)-S\(skyObjects.count)", timer: timer, blackHoleChangingPointMass: blackHoleChangingPointMass, blackHoleChangingPointRadius: blackHoleChangingPointRadius)
+          let solarSystem = SolarSystem(name: "\(self.name)-S\(skyObjects.count)", blackHoleChangingPointMass, blackHoleChangingPointRadius)
           skyObjects.append(solarSystem)
      }
 }
 
-//MARK: - Galaxy types
 
-private extension Galaxy {
-     enum GalaxyType: String, CaseIterable {
-          case spiral = "Spiral"
-          case elliptical = "Elliptical"
-          case lenticular = "Lenticular"
-          case irregular = "Irregular"
-     }
-}
+
 

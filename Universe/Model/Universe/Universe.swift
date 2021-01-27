@@ -9,21 +9,25 @@ import Foundation
 
 class Universe {
      
-     private let name: String
-     private var galaxies: [Galaxy] = []
+     let name: String
+     var galaxies: [Galaxy] = []
      private var age: Int = 0
-     private var timer: UniverseTimer?
+     private var timer: Timer?
      
      var blackHoleChangingPointMass: Double
      var blackHoleChangingPointRadius: Double
+     
+     var delegate: ChangesDelegate?
      
      init(name: String, blackHoleChangingPointMass: Double, blackHoleChangingPointRadius: Double) {
           self.name = name
           self.blackHoleChangingPointMass = blackHoleChangingPointMass
           self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
           
-          timer?.startTimer()
-          timer?.delegate = self
+          DispatchQueue.global(qos: .background).async { [weak self] in
+               self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
+               RunLoop.current.run()
+          }
      }
 }
 
@@ -31,7 +35,7 @@ class Universe {
 
 extension Universe: GalaxyDelegate {
      func createNewGalaxy() {
-          let galaxy = Galaxy(name: "\(self.name)-G\(galaxies.count)", timer: timer, blackHoleChangingPointMass: blackHoleChangingPointMass, blackHoleChangingPointRadius: blackHoleChangingPointRadius)
+          let galaxy = Galaxy(name: "\(self.name)-G\(galaxies.count)", blackHoleChangingPointMass, blackHoleChangingPointRadius)
           galaxies.append(galaxy)
      }
      
@@ -53,18 +57,23 @@ extension Universe: GalaxyDelegate {
      }
 }
 
-//MARK: - Timer delegate
+//MARK: - Update
 
-extension Universe: TimerDelegate {
-     func updateAge() {
+extension Universe {
+     @objc func updateAge() {
           self.age += 1
           
-          if age%10 == 0 {
+          if self.age%10 == 0 {
                createNewGalaxy()
           }
-          if age%30 == 0 {
+          if self.age%30 == 0 {
                galaxiesCollision()
           }
+          
+          galaxies.forEach {
+               $0.updateAge()
+          }
+          self.delegate?.updateChanges()
      }
 }
 

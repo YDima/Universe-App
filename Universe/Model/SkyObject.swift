@@ -10,4 +10,7 @@ import Foundation
 protocol SkyObject {
      var name: String { get set }
      var age: Int { get set }
+     var mass: Double { get }
+     
+     func updateAge()
 }

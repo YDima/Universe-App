@@ -11,22 +11,27 @@ class Planet {
      
      private var name: String?
      private var type = PlanetType.allCases.randomElement()
-     private var mass: Double?
-     private var temperature: Double?
-     private var radius: Double?
+     private var planetMass = Double.random(in: 0..<1000)
+     private var temperature = Double.random(in: -1000...1000)
+     private var radius = Double.random(in: 0..<100)
      private weak var main: Planet?
-     private var satelites: [Planet] = []
+     var satelites: [Planet] = []
+     
+     var mass: Double {
+          for satelite in satelites {
+               planetMass += satelite.planetMass
+          }
+          return planetMass
+     }
      
      init(name: String) {
           self.name = name
-          initPlanetData()
           initializeSatelites()
      }
      
      private init(name: String, main: Planet) {
           self.name = name
           self.main = main
-          initPlanetData()
      }
      
 }
@@ -45,13 +50,6 @@ private extension Planet {
 //MARK: - Initializers
 
 private extension Planet {
-     func initPlanetData() {
-          let maxPlanetMass = 1000.0
-          self.mass = Double.random(in: 0..<maxPlanetMass)
-          self.radius = Double.random(in: 0..<100)
-          self.temperature = Double.random(in: -1000...1000)
-     }
-     
      func initializeSatelites() {
           let randomNumberOfSatelites = Int.random(in: 0...5)
           for sateliteNumber in 0...randomNumberOfSatelites {
