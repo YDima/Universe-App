@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Universe {
+class Universe: UniverseObject {
      
-     let name: String
+     var name: String
      var galaxies: [Galaxy] = []
      private var age: Int = 0
      private var timer: Timer?
@@ -25,9 +25,10 @@ class Universe {
           self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
           
           DispatchQueue.global(qos: .background).async { [weak self] in
-               self?.timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
+               self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
                RunLoop.current.run()
           }
+          createNewGalaxy()
      }
 }
 
@@ -36,11 +37,12 @@ class Universe {
 extension Universe: GalaxyDelegate {
      func createNewGalaxy() {
           let galaxy = Galaxy(name: "\(self.name)-G\(galaxies.count)", blackHoleChangingPointMass, blackHoleChangingPointRadius)
+          galaxy.delegate = self
           galaxies.append(galaxy)
      }
      
      func galaxiesCollision() {
-          var oldGalaxies = galaxies.filter({$0.age >= 180})
+          var oldGalaxies = galaxies.filter({$0.age >= 180}).shuffled()
           guard oldGalaxies.count > 1 else {
                return
           }

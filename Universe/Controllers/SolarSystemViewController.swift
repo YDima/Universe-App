@@ -10,15 +10,30 @@ import UIKit
 class SolarSystemViewController: UIViewController {
      
      var delegate: StateMachineProtocol?
-
+     
      @IBOutlet weak var planetsCollection: UICollectionView!
-     var galaxy: Galaxy?
-     private let reuseIdentifier = "skyObjectCell"
+     @IBOutlet weak var starInfo: UIView!
+     @IBOutlet weak var starName: UILabel!
+     @IBOutlet weak var starType: UILabel!
+     @IBOutlet weak var starEvolution: UILabel!
+     
+     var universeViewController: UniverseViewController?
+     var solarSystem: SolarSystem?
+     private let reuseIdentifier = "planetCell"
+     
+     required init?(coder aDecoder: NSCoder) {
+          super.init(coder: aDecoder)
+     }
      
      override func viewDidLoad() {
           super.viewDidLoad()
+          starInfo.layer.cornerRadius = starInfo.frame.height / 5
           planetsCollection.delegate = self
           planetsCollection.dataSource = self
+          solarSystem?.delegate = self
+          starName.text = solarSystem?.star.name
+          starType.text = solarSystem?.star.type!.rawValue
+          starEvolution.text = solarSystem?.star.starEvolution.rawValue
      }
      
      override func viewWillAppear(_ animated: Bool) {
@@ -31,31 +46,37 @@ class SolarSystemViewController: UIViewController {
           super.didMove(toParent: parent)
           
           if parent == nil {
-               delegate?.notifyStateMachine(source: self, .Back)
-          }
-     }
-     
-     func updateChanges() {
-          DispatchQueue.main.async { [weak self] in
-               self?.planetsCollection.reloadData()
+               delegate?.notifyStateMachine(source: self, .Back, solarSystem!)
           }
      }
      
 }
 
+//MARK: - Changes update
+
+extension SolarSystemViewController: ChangesDelegate {
+     func updateChanges() {
+          DispatchQueue.main.async { [weak self] in
+               self?.planetsCollection.reloadData()
+          }
+     }
+}
+
+//MARK: - UICollectionViewDataSource
+
 extension SolarSystemViewController: UICollectionViewDataSource {
      
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          galaxy?.skyObjects.count ?? 0
+          solarSystem!.planets.count
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-          let skyObject = galaxy!.skyObjects[indexPath.item]
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SkyObjectCollectionViewCell
+          let planet = solarSystem!.planets[indexPath.item]
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SolarSystemCollectionViewCell
           
-          cell.name.text = skyObject.name
-          cell.age.text = "Age: \(skyObject.age)"
-          cell.mass.text = "Mass: \(skyObject.mass)"
+          cell.planetName.text = planet.name
+          cell.planetMass.text = "Mass: \(planet.mass)"
+          cell.planetType.text = planet.type?.rawValue
           
           cell.layer.cornerRadius = cell.frame.height / 5
           
@@ -64,8 +85,11 @@ extension SolarSystemViewController: UICollectionViewDataSource {
      
 }
 
+//MARK: - UICollectionViewDelegate
+
 extension SolarSystemViewController: UICollectionViewDelegate {
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          
+          let planet = solarSystem!.planets[indexPath.row]
+          delegate?.notifyStateMachine(source: self, .Next, planet)
      }
 }

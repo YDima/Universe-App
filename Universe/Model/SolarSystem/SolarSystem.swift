@@ -14,9 +14,9 @@ protocol SolarSystemDelegate {
 class SolarSystem: SkyObject {
      internal var name: String
      internal var age: Int = 0
-     private var star: Star
+     var star: Star
      private var solarSystemMass = 0.0
-     private var planets: [Planet] = []
+     var planets: [Planet] = []
      private let planetsNumber = Int.random(in: 0...9)
      
      var mass: Double {
@@ -27,12 +27,13 @@ class SolarSystem: SkyObject {
           return solarSystemMass
      }
      
-     private var solarSystemDelegate: SolarSystemDelegate?
+     var solarSystemDelegate: SolarSystemDelegate?
      var delegate: ChangesDelegate?
      
      init(name: String,_ blackHoleChangingPointMass: Double,_ blackHoleChangingPointRadius: Double) {
           self.name = name
           self.star = Star(name: "Star", blackHoleChangingPointMass, blackHoleChangingPointRadius)
+          self.star.delegate = self
      }
 }
 

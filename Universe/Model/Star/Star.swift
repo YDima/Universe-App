@@ -18,8 +18,8 @@ class Star: SkyObject {
      private var temperature = Double.random(in: 1...100)
      private var radius = Double.random(in: 1...100)
      private var luminosity = Double.random(in: 1...100)
-     private var type = StarType.allCases.randomElement()
-     private var starEvolution = StarEvolution.protostar
+     var type = StarType.allCases.randomElement()
+     var starEvolution = StarEvolution.protostar
      
      var delegate: StarDelegate?
      
@@ -53,6 +53,7 @@ extension Star {
                     if mass >= starChangingPointMass && radius >= starChangingPointRadius {
                          starEvolution = .blackHole
                          name = "Black Hole"
+                         print("Black hole")
                          delegate?.starBecameBlackHole(self)
                     }
                     starEvolution = .dwarf

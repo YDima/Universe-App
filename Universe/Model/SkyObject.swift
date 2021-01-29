@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SkyObject {
+protocol SkyObject: UniverseObject {
      var name: String { get set }
      var age: Int { get set }
      var mass: Double { get }

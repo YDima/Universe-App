@@ -19,6 +19,9 @@
 		6484450825C0749D00927F00 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484450725C0749D00927F00 /* PlanetViewController.swift */; };
 		6484450B25C08CF400927F00 /* GalaxyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484450A25C08CF400927F00 /* GalaxyCollectionViewCell.swift */; };
 		648C058025BF667200E32C74 /* SkyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C057F25BF667200E32C74 /* SkyObject.swift */; };
+		6495A83025C3669E00721E88 /* UniverseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6495A82F25C3669E00721E88 /* UniverseObject.swift */; };
+		6495A83325C3824B00721E88 /* SolarSystemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6495A83225C3824B00721E88 /* SolarSystemCollectionViewCell.swift */; };
+		6495A83625C3961700721E88 /* SateliteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6495A83525C3961700721E88 /* SateliteCollectionViewCell.swift */; };
 		64988C5F25C029FD0084E2EE /* StarTypeEvolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64988C5E25C029FD0084E2EE /* StarTypeEvolution.swift */; };
 		64988C6225C02B2C0084E2EE /* GalaxyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64988C6125C02B2C0084E2EE /* GalaxyType.swift */; };
 		64A6280125BB898000593D81 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6280025BB898000593D81 /* Universe.swift */; };
@@ -46,6 +49,9 @@
 		6484450725C0749D00927F00 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
 		6484450A25C08CF400927F00 /* GalaxyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyCollectionViewCell.swift; sourceTree = "<group>"; };
 		648C057F25BF667200E32C74 /* SkyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyObject.swift; sourceTree = "<group>"; };
+		6495A82F25C3669E00721E88 /* UniverseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseObject.swift; sourceTree = "<group>"; };
+		6495A83225C3824B00721E88 /* SolarSystemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystemCollectionViewCell.swift; sourceTree = "<group>"; };
+		6495A83525C3961700721E88 /* SateliteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SateliteCollectionViewCell.swift; sourceTree = "<group>"; };
 		64988C5E25C029FD0084E2EE /* StarTypeEvolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTypeEvolution.swift; sourceTree = "<group>"; };
 		64988C6125C02B2C0084E2EE /* GalaxyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyType.swift; sourceTree = "<group>"; };
 		64A6280025BB898000593D81 /* Universe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universe.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				64A6280025BB898000593D81 /* Universe.swift */,
+				6495A82F25C3669E00721E88 /* UniverseObject.swift */,
 			);
 			path = Universe;
 			sourceTree = "<group>";
@@ -157,6 +164,8 @@
 				64EE37DD25B09092005129CA /* LaunchScreen.storyboard */,
 				6484450A25C08CF400927F00 /* GalaxyCollectionViewCell.swift */,
 				6465E56B25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift */,
+				6495A83225C3824B00721E88 /* SolarSystemCollectionViewCell.swift */,
+				6495A83525C3961700721E88 /* SateliteCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64988C5F25C029FD0084E2EE /* StarTypeEvolution.swift in Sources */,
+				6495A83025C3669E00721E88 /* UniverseObject.swift in Sources */,
+				6495A83625C3961700721E88 /* SateliteCollectionViewCell.swift in Sources */,
 				6484450525C0748B00927F00 /* SolarSystemViewController.swift in Sources */,
 				64EE37D325B0908F005129CA /* AppDelegate.swift in Sources */,
 				648444FE25C0741200927F00 /* UniverseViewController.swift in Sources */,
@@ -283,6 +294,7 @@
 				64A6280125BB898000593D81 /* Universe.swift in Sources */,
 				6465E57425C1426E00CB4FD9 /* States.swift in Sources */,
 				6465E56C25C0F0F100CB4FD9 /* SkyObjectCollectionViewCell.swift in Sources */,
+				6495A83325C3824B00721E88 /* SolarSystemCollectionViewCell.swift in Sources */,
 				6484450825C0749D00927F00 /* PlanetViewController.swift in Sources */,
 				648C058025BF667200E32C74 /* SkyObject.swift in Sources */,
 				6484450B25C08CF400927F00 /* GalaxyCollectionViewCell.swift in Sources */,

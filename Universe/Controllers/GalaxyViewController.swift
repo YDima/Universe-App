@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GalaxyViewController: UIViewController, ChangesDelegate, GalaxyUpdate {
+class GalaxyViewController: UIViewController {
      
      @IBOutlet weak var skyObjectsCollection: UICollectionView!
      var universeViewController: UniverseViewController?
@@ -16,11 +16,15 @@ class GalaxyViewController: UIViewController, ChangesDelegate, GalaxyUpdate {
      
      var delegate: StateMachineProtocol?
      
+     required init?(coder aDecoder: NSCoder) {
+          super.init(coder: aDecoder)
+     }
+     
      override func viewDidLoad() {
           super.viewDidLoad()
           skyObjectsCollection.delegate = self
           skyObjectsCollection.dataSource = self
-          universeViewController?.galaxyDelegate = self
+          galaxy?.changesDelegate = self
      }
      
      override func viewWillAppear(_ animated: Bool) {
@@ -33,26 +37,28 @@ class GalaxyViewController: UIViewController, ChangesDelegate, GalaxyUpdate {
           super.didMove(toParent: parent)
           
           if parent == nil {
-               delegate?.notifyStateMachine(source: self, .Back)
-          }
-     }
-     
-     func updateGalaxy(_ galaxy: Galaxy) {
-          self.galaxy = galaxy
-     }
-     
-     func updateChanges() {
-          DispatchQueue.main.async { [weak self] in
-               self?.skyObjectsCollection.reloadData()
+               delegate?.notifyStateMachine(source: self, .Back, galaxy!)
           }
      }
      
 }
 
+//MARK: - Changes update
+
+extension GalaxyViewController: ChangesDelegate {
+     func updateChanges() {
+          DispatchQueue.main.async { [weak self] in
+               self?.skyObjectsCollection.reloadData()
+          }
+     }
+}
+
+//MARK: - UICollectionViewDataSource
+
 extension GalaxyViewController: UICollectionViewDataSource {
      
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          galaxy?.skyObjects.count ?? 0
+          galaxy!.skyObjects.count
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,10 +76,12 @@ extension GalaxyViewController: UICollectionViewDataSource {
      
 }
 
+//MARK: - UICollectionViewDelegate
+
 extension GalaxyViewController: UICollectionViewDelegate {
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
           let skyObject = galaxy!.skyObjects[indexPath.row]
-          
+          delegate?.notifyStateMachine(source: self, .Next, skyObject)
      }
 }
 

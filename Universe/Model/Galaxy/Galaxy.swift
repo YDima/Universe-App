@@ -11,13 +11,20 @@ protocol GalaxyDelegate {
      func updateAfterGalaxiesCollision(galaxy: Galaxy)
 }
 
-class Galaxy {
+class Galaxy: UniverseObject {
      
      var name: String
      var age: Int = 0
-     var mass: Double = 3.0
+     private var galaxyMass = 0.0
      let type = GalaxyType.allCases.randomElement()
      var skyObjects: [SkyObject] = []
+     
+     var mass: Double {
+          for skyObject in skyObjects {
+               galaxyMass += skyObject.mass
+          }
+          return galaxyMass
+     }
      
      var blackHoleChangingPointMass: Double
      var blackHoleChangingPointRadius: Double
@@ -29,6 +36,7 @@ class Galaxy {
           self.name = name
           self.blackHoleChangingPointMass = blackHoleChangingPointMass
           self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
+          createNewSolarSystem()
      }
      
      func collide(with galaxy: Galaxy) {
@@ -54,6 +62,7 @@ extension Galaxy: SolarSystemDelegate {
      func solarSystemBecameBlackHole(_ star: Star, _ solarSystem: SolarSystem) {
           if let i = skyObjects.firstIndex(where: { $0.name == solarSystem.name }) {
                skyObjects[i] = star
+               print(skyObjects[i])
           }
      }
 }
@@ -83,6 +92,7 @@ private extension Galaxy {
      func createNewSolarSystem() {
           let solarSystem = SolarSystem(name: "\(self.name)-S\(skyObjects.count)", blackHoleChangingPointMass, blackHoleChangingPointRadius)
           skyObjects.append(solarSystem)
+          solarSystem.solarSystemDelegate = self
      }
 }
 

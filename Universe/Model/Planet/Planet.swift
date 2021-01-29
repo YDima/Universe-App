@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Planet {
+class Planet: UniverseObject {
      
-     private var name: String?
-     private var type = PlanetType.allCases.randomElement()
+     internal var name: String
+     var type = PlanetType.allCases.randomElement()
      private var planetMass = Double.random(in: 0..<1000)
      private var temperature = Double.random(in: -1000...1000)
      private var radius = Double.random(in: 0..<100)
-     private weak var main: Planet?
+     weak var main: Planet?
      var satelites: [Planet] = []
      
      var mass: Double {
@@ -38,7 +38,7 @@ class Planet {
 
 //MARK: - Planet types
 
-private extension Planet {
+extension Planet {
      enum PlanetType: String, CaseIterable {
           case gasGiant = "Gas giant"
           case superEarth = "Super Earth"

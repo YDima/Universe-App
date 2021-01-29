@@ -10,8 +10,8 @@ import UIKit
 class PlanetViewController: UIViewController {
      
      @IBOutlet weak var satelitesCollection: UICollectionView!
-     var galaxy: Galaxy?
-     private let reuseIdentifier = "skyObjectCell"
+     var planet: Planet?
+     private let reuseIdentifier = "sateliteCell"
      
      var delegate: StateMachineProtocol?
      
@@ -29,9 +29,9 @@ class PlanetViewController: UIViewController {
      
      override func didMove(toParent parent: UIViewController?) {
           super.didMove(toParent: parent)
-          
+
           if parent == nil {
-               delegate?.notifyStateMachine(source: self, .Back)
+               delegate?.notifyStateMachine(source: self, .Back, planet!)
           }
      }
      
@@ -46,15 +46,14 @@ class PlanetViewController: UIViewController {
 extension PlanetViewController: UICollectionViewDataSource {
      
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          galaxy?.skyObjects.count ?? 0
+          planet?.satelites.count ?? 0
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-          let skyObject = galaxy!.skyObjects[indexPath.item]
+          let skyObject = planet!.satelites[indexPath.item]
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SkyObjectCollectionViewCell
           
           cell.name.text = skyObject.name
-          cell.age.text = "Age: \(skyObject.age)"
           cell.mass.text = "Mass: \(skyObject.mass)"
           
           cell.layer.cornerRadius = cell.frame.height / 5

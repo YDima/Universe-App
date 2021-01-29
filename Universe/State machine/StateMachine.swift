@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SimpleStateMachine<State, Event> where State: Hashable, Event: Hashable {
+public class UniverseStateMachine<State, Event> where State: Hashable, Event: Hashable {
      private(set) var currentState: State
      private var states: [State : [Event : State]] = [:]
      

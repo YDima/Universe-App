@@ -8,5 +8,5 @@
 import UIKit
 
 protocol StateMachineProtocol {
-     func notifyStateMachine(source: UIViewController, _ event: Actions)
+     func notifyStateMachine(source: UIViewController, _ event: Actions, _ universeObject: UniverseObject)
 }

@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol GalaxyUpdate {
-     func updateGalaxy(_ galaxy: Galaxy)
-}
-
 class UniverseViewController: UIViewController, ChangesDelegate {
      
      @IBOutlet weak var galaxiesCollection: UICollectionView!
@@ -18,9 +14,8 @@ class UniverseViewController: UIViewController, ChangesDelegate {
      private let reuseIdentifier = "galaxyCell"
      
      var delegate: StateMachineProtocol?
-     var galaxyDelegate: GalaxyUpdate?
      
-     var universeStateMachine = SimpleStateMachine<UniverseStates, Actions>(initialState: .Galaxies)
+     var universeStateMachine = UniverseStateMachine<UniverseStates, Actions>(initialState: .Galaxies)
      
      lazy var universeViewController: UniverseViewController = UIStoryboard(name: "Main", bundle: Bundle(for: UniverseViewController.self)).instantiateViewController(withIdentifier: "UniverseViewController") as! UniverseViewController
      lazy var galaxyViewController: GalaxyViewController = UIStoryboard(name: "Main", bundle: Bundle(for: GalaxyViewController.self)).instantiateViewController(withIdentifier: "GalaxyViewController") as! GalaxyViewController
@@ -81,15 +76,13 @@ extension UniverseViewController {
      }
 }
 
-// This is where the magic happens!
 extension UniverseViewController: StateMachineProtocol {
      
-     func notifyStateMachine(source: UIViewController, _ event: Actions) {
+     func notifyStateMachine(source: UIViewController, _ event: Actions,_ universeObject: UniverseObject) {
           
           if let nextState = universeStateMachine.transition(event: event) {
                
                if event == .Back {
-                    print(333)
                     return
                }
                
@@ -97,8 +90,10 @@ extension UniverseViewController: StateMachineProtocol {
                     case .Galaxies:
                          self.navigationController?.pushViewController(universeViewController, animated: true)
                     case .SolarSystems:
+                         galaxyViewController.galaxy = universeObject as! Galaxy
                          self.navigationController?.pushViewController(galaxyViewController, animated: true)
                     case .PlanetsAndStar:
+                         solarSystemViewController.solarSystem = universeObject as! SolarSystem
                          self.navigationController?.pushViewController(solarSystemViewController, animated: true)
                     case .Satelites:
                          self.navigationController?.pushViewController(planetViewController, animated: true)
@@ -130,10 +125,11 @@ extension UniverseViewController: UICollectionViewDataSource {
      
 }
 
+//MARK: - UICollectionViewDelegate
+
 extension UniverseViewController: UICollectionViewDelegate {
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
           let galaxy = universe!.galaxies[indexPath.row]
-          galaxyDelegate?.updateGalaxy(galaxy)
-          notifyStateMachine(source: self, .Next)
+          notifyStateMachine(source: self, .Next, galaxy)
      }
 }
