@@ -96,6 +96,7 @@ extension UniverseViewController: StateMachineProtocol {
                          solarSystemViewController.solarSystem = universeObject as! SolarSystem
                          self.navigationController?.pushViewController(solarSystemViewController, animated: true)
                     case .Satelites:
+                         planetViewController.planet = universeObject as! Planet
                          self.navigationController?.pushViewController(planetViewController, animated: true)
                }
           }

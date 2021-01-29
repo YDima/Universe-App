@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanetViewController: UIViewController {
+class PlanetViewController: UIViewController, ChangesDelegate {
      
      @IBOutlet weak var satelitesCollection: UICollectionView!
      var planet: Planet?
@@ -17,8 +17,12 @@ class PlanetViewController: UIViewController {
      
      override func viewDidLoad() {
           super.viewDidLoad()
-          satelitesCollection.delegate = self
           satelitesCollection.dataSource = self
+          planet?.delegate = self
+     }
+     
+     required init?(coder aDecoder: NSCoder) {
+          super.init(coder: aDecoder)
      }
      
      override func viewWillAppear(_ animated: Bool) {
@@ -46,25 +50,19 @@ class PlanetViewController: UIViewController {
 extension PlanetViewController: UICollectionViewDataSource {
      
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          planet?.satelites.count ?? 0
+          planet!.satelites.count
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-          let skyObject = planet!.satelites[indexPath.item]
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SkyObjectCollectionViewCell
+          let satelite = planet!.satelites[indexPath.item]
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! SateliteCollectionViewCell
           
-          cell.name.text = skyObject.name
-          cell.mass.text = "Mass: \(skyObject.mass)"
+          cell.name.text = satelite.name
+          cell.mass.text = "Mass: \(satelite.planetMass)"
           
           cell.layer.cornerRadius = cell.frame.height / 5
           
           return cell
      }
      
-}
-
-extension PlanetViewController: UICollectionViewDelegate {
-     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          
-     }
 }

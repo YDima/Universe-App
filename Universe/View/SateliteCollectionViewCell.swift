@@ -8,5 +8,6 @@
 import UIKit
 
 class SateliteCollectionViewCell: UICollectionViewCell {
-    
+     @IBOutlet weak var name: UILabel!
+     @IBOutlet weak var mass: UILabel!
 }

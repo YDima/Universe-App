@@ -55,6 +55,12 @@ extension SolarSystem {
      func updateAge() {
           self.age += 1
           
+          star.updateAge()
+          planets.forEach {
+               $0.updateAge()
+          }
+          self.delegate?.updateChanges()
+          
           guard planets.count <= planetsNumber else {
                return
           }
@@ -63,9 +69,6 @@ extension SolarSystem {
                createNewPlanet()
           }
           
-          star.updateAge()
-          
-          self.delegate?.updateChanges()
      }
 }
 

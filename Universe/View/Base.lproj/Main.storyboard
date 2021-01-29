@@ -327,7 +327,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sateliteCell" id="3oJ-x5-sSF" customClass="SolarSystemCollectionViewCell" customModule="Universe" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sateliteCell" id="3oJ-x5-sSF" customClass="SateliteCollectionViewCell" customModule="Universe" customModuleProvider="target">
                                         <rect key="frame" x="8" y="0.0" width="398" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ViB-fI-bFm">
@@ -340,12 +340,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45P-F5-8Yb">
-                                                    <rect key="frame" x="333" y="24" width="50" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Mass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14N-g9-Io7">
                                                     <rect key="frame" x="327" y="77" width="56" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -354,10 +348,8 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="45P-F5-8Yb" firstAttribute="top" secondItem="ViB-fI-bFm" secondAttribute="top" constant="24" id="0Hn-9O-2tK"/>
                                                 <constraint firstItem="Svy-F4-8qK" firstAttribute="top" secondItem="ViB-fI-bFm" secondAttribute="top" constant="45" id="0mi-aX-bG2"/>
                                                 <constraint firstAttribute="bottom" secondItem="Svy-F4-8qK" secondAttribute="bottom" constant="45" id="6Mg-3l-pcx"/>
-                                                <constraint firstAttribute="trailing" secondItem="45P-F5-8Yb" secondAttribute="trailing" constant="15" id="ACN-K6-JFT"/>
                                                 <constraint firstItem="Svy-F4-8qK" firstAttribute="leading" secondItem="ViB-fI-bFm" secondAttribute="leading" constant="15" id="jlz-vk-vib"/>
                                                 <constraint firstAttribute="trailing" secondItem="14N-g9-Io7" secondAttribute="trailing" constant="15" id="o5h-5k-lxz"/>
                                                 <constraint firstAttribute="bottom" secondItem="14N-g9-Io7" secondAttribute="bottom" constant="24" id="wFD-MV-efa"/>
@@ -366,9 +358,8 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="customSize" width="398" height="130"/>
                                         <connections>
-                                            <outlet property="planetMass" destination="14N-g9-Io7" id="Nla-Og-SJ4"/>
-                                            <outlet property="planetName" destination="Svy-F4-8qK" id="mqF-CO-bnu"/>
-                                            <outlet property="planetType" destination="45P-F5-8Yb" id="QO5-EK-gYL"/>
+                                            <outlet property="mass" destination="14N-g9-Io7" id="mhI-bM-5XB"/>
+                                            <outlet property="name" destination="Svy-F4-8qK" id="rP2-c6-jdG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
