@@ -22,6 +22,11 @@ class Planet: UniverseObject {
      
      var mass: Double {
           for satelite in satelites {
+            /*
+             Mentor's comment:
+             You mutate the field here, inside a computed property. This leads to a bug when planet's mass
+             infinitely grows.
+             */
                planetMass += satelite.planetMass
           }
           return planetMass

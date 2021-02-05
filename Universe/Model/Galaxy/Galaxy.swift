@@ -29,6 +29,13 @@ class Galaxy: UniverseObject {
      var blackHoleChangingPointMass: Double
      var blackHoleChangingPointRadius: Double
      
+    /*
+     Mentor's comment:
+     This issue is present inside every entity you have, so I'll write about it only once and here.
+     You must never (really never) keep delegates with a strong reference. Each time you do it, you almost 100%
+     create a retain cycle thus introducing a memory leak. Your code is "free" of leaking view controllers and models
+     only because you keep them deliberately (see lazy view controller properties of UniverseViewController).
+     */
      var delegate: GalaxyDelegate?
      var changesDelegate: ChangesDelegate?
      
@@ -52,6 +59,12 @@ class Galaxy: UniverseObject {
                skyObjectsPercents -= 1
           }
           
+        /*
+         Mentor's comment:
+         I see no point of calling a delegate for this functionality. Take a look at the code which calls
+         this (collide(with:)) method. It calls this method synchronusly, so you can safely move the line below
+         there and simplify the codebase.
+         */
           delegate?.updateAfterGalaxiesCollision(galaxy: galaxy)
      }
 }
@@ -61,6 +74,10 @@ class Galaxy: UniverseObject {
 extension Galaxy: SolarSystemDelegate {
      func solarSystemBecameBlackHole(_ star: Star, _ solarSystem: SolarSystem) {
           if let i = skyObjects.firstIndex(where: { $0.name == solarSystem.name }) {
+            /*
+             Mentor's comment:
+             Good job, I think that keeping black hole in the same place where it's solar system were is a good idea. 👍
+             */
                skyObjects[i] = star
                print(skyObjects[i])
           }

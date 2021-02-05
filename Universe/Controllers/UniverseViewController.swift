@@ -16,7 +16,14 @@ class UniverseViewController: UIViewController, ChangesDelegate {
      var delegate: StateMachineProtocol?
      
      var universeStateMachine = UniverseStateMachine<UniverseStates, Actions>(initialState: .Galaxies)
-     
+    /*
+     Mentor's comment:
+     It's not a mistake, but next time try to group similar logic below in a generic function
+     ---
+     And in general it's a bad decision to keep all these view controllers in memory all the time.
+     In relatively simple app like this one it's fine, but in bigger ones this may lead to very poor
+     memory performance.
+     */
      lazy var universeViewController: UniverseViewController = UIStoryboard(name: "Main", bundle: Bundle(for: UniverseViewController.self)).instantiateViewController(withIdentifier: "UniverseViewController") as! UniverseViewController
      lazy var galaxyViewController: GalaxyViewController = UIStoryboard(name: "Main", bundle: Bundle(for: GalaxyViewController.self)).instantiateViewController(withIdentifier: "GalaxyViewController") as! GalaxyViewController
      lazy var solarSystemViewController: SolarSystemViewController = UIStoryboard(name: "Main", bundle: Bundle(for: SolarSystemViewController.self)).instantiateViewController(withIdentifier: "SolarSystemViewController") as! SolarSystemViewController
@@ -76,6 +83,11 @@ extension UniverseViewController {
      }
 }
 
+/*
+ Mentor's comment:
+ Navigation inside an app isn't a great fit for state machine pattern. This kind of logic is usually
+ implemented inside a Coordinator object.
+ */
 extension UniverseViewController: StateMachineProtocol {
      
      func notifyStateMachine(source: UIViewController, _ event: Actions,_ universeObject: UniverseObject) {
