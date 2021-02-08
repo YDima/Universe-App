@@ -57,6 +57,15 @@ class SolarSystemViewController: UIViewController {
 extension SolarSystemViewController: ChangesDelegate {
      func updateChanges() {
           DispatchQueue.main.async { [weak self] in
+            /*
+             Mentor's comment:
+             Some features are missing here.
+             > Реализовать обработку жизненного цикла текущего уровня иерархии (например его удаление).
+               Один из примеров: пользователь находится на экране звездно-планетарной системы и в это самое время
+               родительская галактика сталкивается с другой галактикой в результате чего текущая звездно-планетарная
+               система случайным образом выбрана для уничтожения. Необходимо корректнореализовать это состояние
+               с точки зрения UI (например плейсхолдер или алерт с возвратом на более высокий уровень иерархии).
+             */
                self?.planetsCollection.reloadData()
           }
      }

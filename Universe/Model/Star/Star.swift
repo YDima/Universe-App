@@ -45,6 +45,10 @@ extension Star {
           
      }
      
+    /*
+     Mentor's comment:
+     And this is a correct example of state machine pattern.
+     */
      func nextEvolutionStage() {
           switch starEvolution {
                case .protostar:
