@@ -13,6 +13,10 @@
 		6465E57425C1426E00CB4FD9 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57325C1426E00CB4FD9 /* States.swift */; };
 		6465E57725C1432D00CB4FD9 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57625C1432D00CB4FD9 /* Actions.swift */; };
 		6465E57A25C143A000CB4FD9 /* StateMachineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6465E57925C143A000CB4FD9 /* StateMachineProtocol.swift */; };
+		6470027825D3B88E00DF0461 /* GalaxyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470027725D3B88E00DF0461 /* GalaxyDelegate.swift */; };
+		6470027B25D3C11A00DF0461 /* SolarSystemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470027A25D3C11A00DF0461 /* SolarSystemDelegate.swift */; };
+		6470027E25D3C15300DF0461 /* StarDlelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470027D25D3C15300DF0461 /* StarDlelegate.swift */; };
+		6470028125D3C6B300DF0461 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470028025D3C6B300DF0461 /* Coordinator.swift */; };
 		648444FE25C0741200927F00 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648444FD25C0741200927F00 /* UniverseViewController.swift */; };
 		6484450225C0747900927F00 /* GalaxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484450125C0747900927F00 /* GalaxyViewController.swift */; };
 		6484450525C0748B00927F00 /* SolarSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484450425C0748B00927F00 /* SolarSystemViewController.swift */; };
@@ -43,6 +47,10 @@
 		6465E57325C1426E00CB4FD9 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		6465E57625C1432D00CB4FD9 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		6465E57925C143A000CB4FD9 /* StateMachineProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineProtocol.swift; sourceTree = "<group>"; };
+		6470027725D3B88E00DF0461 /* GalaxyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyDelegate.swift; sourceTree = "<group>"; };
+		6470027A25D3C11A00DF0461 /* SolarSystemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystemDelegate.swift; sourceTree = "<group>"; };
+		6470027D25D3C15300DF0461 /* StarDlelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarDlelegate.swift; sourceTree = "<group>"; };
+		6470028025D3C6B300DF0461 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		648444FD25C0741200927F00 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
 		6484450125C0747900927F00 /* GalaxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyViewController.swift; sourceTree = "<group>"; };
 		6484450425C0748B00927F00 /* SolarSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarSystemViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +94,7 @@
 				6465E57325C1426E00CB4FD9 /* States.swift */,
 				6465E57625C1432D00CB4FD9 /* Actions.swift */,
 				6465E57925C143A000CB4FD9 /* StateMachineProtocol.swift */,
+				6470028025D3C6B300DF0461 /* Coordinator.swift */,
 			);
 			path = "State machine";
 			sourceTree = "<group>";
@@ -98,6 +107,17 @@
 				64EE37DB25B09092005129CA /* Assets.xcassets */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		6470027625D3B86000DF0461 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				6465E56725C0CB6300CB4FD9 /* ChangesDelegate.swift */,
+				6470027725D3B88E00DF0461 /* GalaxyDelegate.swift */,
+				6470027A25D3C11A00DF0461 /* SolarSystemDelegate.swift */,
+				6470027D25D3C15300DF0461 /* StarDlelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		64988C5925C029A20084E2EE /* Universe */ = {
@@ -146,13 +166,13 @@
 		64A627FF25BB895D00593D81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6470027625D3B86000DF0461 /* Delegates */,
 				64988C5925C029A20084E2EE /* Universe */,
 				64988C5A25C029B00084E2EE /* Galaxy */,
 				64988C5B25C029BE0084E2EE /* SolarSystem */,
 				64988C5C25C029D30084E2EE /* Star */,
 				64988C5D25C029E00084E2EE /* Planet */,
 				648C057F25BF667200E32C74 /* SkyObject.swift */,
-				6465E56725C0CB6300CB4FD9 /* ChangesDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,9 +305,12 @@
 				6495A83625C3961700721E88 /* SateliteCollectionViewCell.swift in Sources */,
 				6484450525C0748B00927F00 /* SolarSystemViewController.swift in Sources */,
 				64EE37D325B0908F005129CA /* AppDelegate.swift in Sources */,
+				6470027E25D3C15300DF0461 /* StarDlelegate.swift in Sources */,
 				648444FE25C0741200927F00 /* UniverseViewController.swift in Sources */,
 				6465E56825C0CB6300CB4FD9 /* ChangesDelegate.swift in Sources */,
+				6470027825D3B88E00DF0461 /* GalaxyDelegate.swift in Sources */,
 				6465E57725C1432D00CB4FD9 /* Actions.swift in Sources */,
+				6470027B25D3C11A00DF0461 /* SolarSystemDelegate.swift in Sources */,
 				64A6280725BC1A7E00593D81 /* SolarSystem.swift in Sources */,
 				64A6280D25BC1A9500593D81 /* Planet.swift in Sources */,
 				64A6280A25BC1A8800593D81 /* Star.swift in Sources */,
@@ -297,6 +320,7 @@
 				6495A83325C3824B00721E88 /* SolarSystemCollectionViewCell.swift in Sources */,
 				6484450825C0749D00927F00 /* PlanetViewController.swift in Sources */,
 				648C058025BF667200E32C74 /* SkyObject.swift in Sources */,
+				6470028125D3C6B300DF0461 /* Coordinator.swift in Sources */,
 				6484450B25C08CF400927F00 /* GalaxyCollectionViewCell.swift in Sources */,
 				6465E57125C1404700CB4FD9 /* StateMachine.swift in Sources */,
 				6484450225C0747900927F00 /* GalaxyViewController.swift in Sources */,

@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol StarDelegate {
-     func starBecameBlackHole(_ star: Star)
-}
-
 class Star: SkyObject {
      internal var name: String
      internal var age = 0
@@ -21,7 +17,7 @@ class Star: SkyObject {
      var type = StarType.allCases.randomElement()
      var starEvolution = StarEvolution.protostar
      
-     var delegate: StarDelegate?
+     weak var delegate: StarDelegate?
      
      private var starChangingPointMass: Double
      private var starChangingPointRadius: Double
@@ -45,7 +41,7 @@ extension Star {
           
      }
      
-    /*
+    /* 👍
      Mentor's comment:
      And this is a correct example of state machine pattern.
      */

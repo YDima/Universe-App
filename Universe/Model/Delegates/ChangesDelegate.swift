@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ChangesDelegate {
+protocol ChangesDelegate: AnyObject {
      func updateChanges()
 }
 

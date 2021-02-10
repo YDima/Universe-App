@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol GalaxyDelegate {
-     func updateAfterGalaxiesCollision(galaxy: Galaxy)
-}
-
 class Galaxy: UniverseObject {
      
      var name: String
@@ -29,15 +25,15 @@ class Galaxy: UniverseObject {
      var blackHoleChangingPointMass: Double
      var blackHoleChangingPointRadius: Double
      
-    /*
+    /* 👍
      Mentor's comment:
      This issue is present inside every entity you have, so I'll write about it only once and here.
      You must never (really never) keep delegates with a strong reference. Each time you do it, you almost 100%
      create a retain cycle thus introducing a memory leak. Your code is "free" of leaking view controllers and models
      only because you keep them deliberately (see lazy view controller properties of UniverseViewController).
      */
-     var delegate: GalaxyDelegate?
-     var changesDelegate: ChangesDelegate?
+     weak var delegate: GalaxyDelegate?
+     weak var changesDelegate: ChangesDelegate?
      
      init(name: String,_ blackHoleChangingPointMass: Double,_ blackHoleChangingPointRadius: Double) {
           self.name = name
@@ -79,7 +75,6 @@ extension Galaxy: SolarSystemDelegate {
              Good job, I think that keeping black hole in the same place where it's solar system were is a good idea. 👍
              */
                skyObjects[i] = star
-               print(skyObjects[i])
           }
      }
 }

@@ -17,7 +17,7 @@ class Universe: UniverseObject {
      var blackHoleChangingPointMass: Double
      var blackHoleChangingPointRadius: Double
      
-     var delegate: ChangesDelegate?
+     weak var delegate: ChangesDelegate?
      
      init(name: String, blackHoleChangingPointMass: Double, blackHoleChangingPointRadius: Double) {
           self.name = name
@@ -25,7 +25,7 @@ class Universe: UniverseObject {
           self.blackHoleChangingPointRadius = blackHoleChangingPointRadius
           
           DispatchQueue.global(qos: .background).async { [weak self] in
-               self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
+               self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self!, selector: #selector(self?.updateAge), userInfo: nil, repeats: true)
                RunLoop.current.run()
           }
           createNewGalaxy()
@@ -46,11 +46,7 @@ extension Universe: GalaxyDelegate {
           guard oldGalaxies.count > 1 else {
                return
           }
-        /**
-         Mentor's comment:
-         There is no randomisation here. Please check the requirements more carefully in future.
-         > Каждые 30 секунд 2 **случайно выбранные** галактики возрастом более 3 минут сталкиваются
-         */
+        
           oldGalaxies = Array(oldGalaxies.prefix(upTo: 2))
           oldGalaxies = oldGalaxies.sorted(by: { $0.mass > $1.mass })
           

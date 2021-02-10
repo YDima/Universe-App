@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol SolarSystemDelegate {
-     func solarSystemBecameBlackHole(_ star: Star, _ solarSystem: SolarSystem)
-}
-
 class SolarSystem: SkyObject {
      internal var name: String
      internal var age: Int = 0
@@ -27,8 +23,8 @@ class SolarSystem: SkyObject {
           return solarSystemMass
      }
      
-     var solarSystemDelegate: SolarSystemDelegate?
-     var delegate: ChangesDelegate?
+     weak var solarSystemDelegate: SolarSystemDelegate?
+     weak var delegate: ChangesDelegate?
      
      init(name: String,_ blackHoleChangingPointMass: Double,_ blackHoleChangingPointRadius: Double) {
           self.name = name

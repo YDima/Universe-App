@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol StateMachineProtocol {
-     func notifyStateMachine(source: UIViewController, _ event: Actions, _ universeObject: UniverseObject)
+protocol StateMachineProtocol: AnyObject {
+    func notifyStateMachine(source: UIViewController, _ event: Actions, _ universeObject: UniverseObject, coordinator: Coordinator)
 }

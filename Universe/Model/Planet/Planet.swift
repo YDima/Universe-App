@@ -18,7 +18,7 @@ class Planet: UniverseObject {
      weak var main: Planet?
      var satelites: [Planet] = []
      
-     var delegate: ChangesDelegate?
+     weak var delegate: ChangesDelegate?
      
      var mass: Double {
           for satelite in satelites {
