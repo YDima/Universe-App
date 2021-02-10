@@ -11,20 +11,7 @@ class Coordinator: StateMachineProtocol {
     
     var universeStateMachine = UniverseStateMachine<UniverseStates, Actions>(initialState: .Galaxies)
     
-    lazy var universeViewController: UniverseViewController = UIStoryboard(name: "Main", bundle: Bundle(for: UniverseViewController.self)).instantiateViewController(withIdentifier: "UniverseViewController") as! UniverseViewController
-    
-    lazy var galaxyViewController: GalaxyViewController = UIStoryboard(name: "Main", bundle: Bundle(for: GalaxyViewController.self)).instantiateViewController(withIdentifier: "GalaxyViewController") as! GalaxyViewController
-    
-    lazy var solarSystemViewController: SolarSystemViewController = UIStoryboard(name: "Main", bundle: Bundle(for: SolarSystemViewController.self)).instantiateViewController(withIdentifier: "SolarSystemViewController") as! SolarSystemViewController
-    
-    lazy var planetViewController: PlanetViewController = UIStoryboard(name: "Main", bundle: Bundle(for: PlanetViewController.self)).instantiateViewController(withIdentifier: "PlanetViewController") as! PlanetViewController
-    
     func setup() {
-        universeViewController.delegate = self
-        galaxyViewController.delegate = self
-        solarSystemViewController.delegate = self
-        planetViewController.delegate = self
-        
         self.universeStateMachine[.Galaxies] = [
             .Next: .SolarSystems
         ]
@@ -53,24 +40,34 @@ class Coordinator: StateMachineProtocol {
             
             switch nextState {
                 case .Galaxies:
-                    universeViewController.navigationController?.pushViewController(universeViewController, animated: true)
+                    let universeViewController: UniverseViewController = .instantiate(from: "Main", identifier: "UniverseViewController")
+                    source.navigationController?.pushViewController(universeViewController, animated: true)
                     
                 case .SolarSystems:
+                    let galaxyViewController: GalaxyViewController = .instantiate(from: "Main", identifier: "GalaxyViewController")
                     galaxyViewController.galaxy = (universeObject as! Galaxy)
                     galaxyViewController.coordinator = coordinator
-                    universeViewController.navigationController?.pushViewController(galaxyViewController, animated: true)
+                    source.navigationController?.pushViewController(galaxyViewController, animated: true)
                     
                 case .PlanetsAndStar:
+                    let solarSystemViewController: SolarSystemViewController = .instantiate(from: "Main", identifier: "SolarSystemViewController")
                     solarSystemViewController.solarSystem = (universeObject as! SolarSystem)
                     solarSystemViewController.coordinator = coordinator
-                    universeViewController.navigationController?.pushViewController(solarSystemViewController, animated: true)
+                    source.navigationController?.pushViewController(solarSystemViewController, animated: true)
                     
                 case .Satelites:
+                    let planetViewController: PlanetViewController = .instantiate(from: "Main", identifier: "PlanetViewController")
                     planetViewController.planet = (universeObject as! Planet)
                     planetViewController.coordinator = coordinator
-                    universeViewController.navigationController?.pushViewController(planetViewController, animated: true)
+                    source.navigationController?.pushViewController(planetViewController, animated: true)
             }
         }
     }
     
+}
+
+extension UIViewController {
+    static func instantiate<T: UIViewController>(from storyboard: String, identifier: String) -> T {
+        return UIStoryboard(name: storyboard, bundle: Bundle(for: T.self)).instantiateViewController(withIdentifier: identifier) as! T
+    }
 }

@@ -16,7 +16,7 @@ class UniverseViewController: UIViewController {
     
     weak var delegate: StateMachineProtocol?
     
-    /*
+    /* 👍
      Mentor's comment:
      It's not a mistake, but next time try to group similar logic below in a generic function
      ---
@@ -55,37 +55,7 @@ extension UniverseViewController: ChangesDelegate {
     }
 }
 
-////MARK: - State machine
-//
-//extension UniverseViewController {
-//    func setup() {
-//
-//        self.universeStateMachine[.Galaxies] = [
-//            .Next: .SolarSystems
-//        ]
-//
-//        self.universeStateMachine[.SolarSystems] = [
-//            .Next: .PlanetsAndStar,
-//            .Back: .Galaxies
-//        ]
-//
-//        self.universeStateMachine[.PlanetsAndStar] = [
-//            .Next: .Satelites,
-//            .Back: .SolarSystems
-//        ]
-//
-//        self.universeStateMachine[.Satelites] = [
-//            .Back: .PlanetsAndStar
-//        ]
-//
-//        //        self.universeViewController.delegate = self
-//        //        self.galaxyViewController.delegate = self
-//        //        self.solarSystemViewController.delegate = self
-//        //        self.planetViewController.delegate = self
-//    }
-//}
-
-/*
+/* 👍
  Mentor's comment:
  Navigation inside an app isn't a great fit for state machine pattern. This kind of logic is usually
  implemented inside a Coordinator object.

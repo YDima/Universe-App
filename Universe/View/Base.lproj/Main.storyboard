@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1iY-2V-YJO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SfP-SJ-Rp5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="UniverseViewController" id="mMn-kM-EZ3" customClass="UniverseViewController" customModule="Universe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1R3-WJ-EXU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="anO-0G-an2">
-                                <rect key="frame" x="8" y="0.0" width="398" height="808"/>
+                                <rect key="frame" x="8" y="88" width="398" height="808"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GHR-5p-Riy">
                                     <size key="itemSize" width="398" height="130"/>
@@ -90,12 +90,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhw-68-2Vc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931.8840579710147" y="93.75"/>
+            <point key="canvasLocation" x="2789.8550724637685" y="93.75"/>
         </scene>
         <!--Galaxy View Controller-->
         <scene sceneID="7pa-iy-L3P">
             <objects>
-                <viewController storyboardIdentifier="GalaxyViewController" id="jnp-jx-xGm" customClass="GalaxyViewController" customModule="Universe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GalaxyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jnp-jx-xGm" customClass="GalaxyViewController" customModule="Universe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4jw-5U-c9B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCB-vV-bYs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2766.666666666667" y="93.75"/>
+            <point key="canvasLocation" x="3676.811594202899" y="93.75"/>
         </scene>
         <!--SolarSystem View Controller-->
         <scene sceneID="aVc-5N-TCt">
@@ -306,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8C-gu-hml" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.753623188406" y="93.75"/>
+            <point key="canvasLocation" x="4502.898550724638" y="93.75"/>
         </scene>
         <!--Planet View Controller-->
         <scene sceneID="JQw-Gv-KT4">
@@ -381,26 +381,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4M-EB-QtF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4492.753623188406" y="93.75"/>
+            <point key="canvasLocation" x="5402.898550724638" y="93.75"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="nxc-Nh-bgb">
+        <scene sceneID="bcA-bc-esA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fOC-dV-cSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1iY-2V-YJO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SfP-SJ-Rp5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JEs-tc-DDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QYT-b7-yKF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="mMn-kM-EZ3" kind="relationship" relationship="rootViewController" id="oaW-9i-8ty"/>
+                        <segue destination="mMn-kM-EZ3" kind="relationship" relationship="rootViewController" id="I0W-yr-qRZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ziQ-tt-Hjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021.7391304347827" y="93.75"/>
+            <point key="canvasLocation" x="1879.7101449275365" y="93.75"/>
         </scene>
     </scenes>
 </document>
