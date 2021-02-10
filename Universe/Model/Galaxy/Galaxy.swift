@@ -32,7 +32,7 @@ class Galaxy: UniverseObject {
      create a retain cycle thus introducing a memory leak. Your code is "free" of leaking view controllers and models
      only because you keep them deliberately (see lazy view controller properties of UniverseViewController).
      */
-     weak var delegate: GalaxyDelegate?
+    
      weak var changesDelegate: ChangesDelegate?
      
      init(name: String,_ blackHoleChangingPointMass: Double,_ blackHoleChangingPointRadius: Double) {
@@ -55,13 +55,12 @@ class Galaxy: UniverseObject {
                skyObjectsPercents -= 1
           }
           
-        /*
+        /* 👍
          Mentor's comment:
          I see no point of calling a delegate for this functionality. Take a look at the code which calls
          this (collide(with:)) method. It calls this method synchronusly, so you can safely move the line below
          there and simplify the codebase.
          */
-          delegate?.updateAfterGalaxiesCollision(galaxy: galaxy)
      }
 }
 
